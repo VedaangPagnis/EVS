@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesium Globe</title>
+    
+    <!-- Include CesiumJS -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js"></script>
+    <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Make sure the Cesium container fills the whole screen */
+        html, body, #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- This div will contain the Cesium globe -->
+    <div id="cesiumContainer"></div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+
+    <div id="infoPane" class="hidden">
+        <button id="closeBtn">✖</button>
+        <h2 id="placeName">Location</h2>
+        <p><strong>Latitude:</strong> <span id="latText"></span></p>
+        <p><strong>Longitude:</strong> <span id="lonText"></span></p>
+        <p><strong>AQI:</strong> <span id="aqiText"></span></p>
+        <div id="componentsList"></div>
+    </div>
+    
+</body>
+</html>

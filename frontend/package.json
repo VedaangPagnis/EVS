@@ -1,0 +1,20 @@
+{
+  "name": "evs_cesium",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel public/index.html --open",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cesium": "^1.128.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  }
+}

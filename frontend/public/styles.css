@@ -1,0 +1,22 @@
+#infoPane {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    z-index: 999;
+}
+.hidden {
+    display: none;
+}
+#closeBtn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+}
