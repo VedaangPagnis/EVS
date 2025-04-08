@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cesium Globe</title>
@@ -20,6 +21,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- This div will contain the Cesium globe -->
     <div id="cesiumContainer"></div>
@@ -27,14 +29,45 @@
     <!-- Link to your JavaScript file -->
     <script src="script.js"></script>
 
-    <div id="infoPane" class="hidden">
-        <button id="closeBtn">✖</button>
-        <h2 id="placeName">Location</h2>
-        <p><strong>Latitude:</strong> <span id="latText"></span></p>
-        <p><strong>Longitude:</strong> <span id="lonText"></span></p>
-        <p><strong>AQI:</strong> <span id="aqiText"></span></p>
-        <div id="componentsList"></div>
+    <div id="backdrop" class="hidden">
+    <div id="infoPane">
+        <div class="info-header">
+            <h2 id="placeName"><span class="location-text">Location</span></h2>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle">🌓</button>
+                <button id="closeBtn" aria-label="Close panel">✖</button>
+            </div>
+            
+        </div>
+        
+        <div class="info-section">
+            <h3 class="section-title">Coordinates</h3>
+            <div class="info-row">
+                <span class="info-label">Latitude:</span>
+                <span id="latText" class="info-value">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Longitude:</span>
+                <span id="lonText" class="info-value">-</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-row">
+                <span class="info-label">AQI:</span>
+                <span id="aqiText" class="aqi-value">-</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            
+            <div id="componentsList" class="pollutants-list">
+                <!-- Will be populated dynamically -->
+            </div>
+        </div>
     </div>
-    
+    </div>
+
+       
 </body>
 </html>

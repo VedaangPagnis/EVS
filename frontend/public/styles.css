@@ -1,22 +1,206 @@
+:root {
+    /* Light Theme Variables */
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --border-color: #eaeaea;
+    --section-bg: #f8f9fa;
+    --button-hover: #f0f0f0;
+    --aqi-color: #166cb8;
+    --section-title-color: #555;
+    --info-label-color: #2b2b2b;
+    --place-name-color: #206423;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Variables */
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --border-color: #404040;
+    --section-bg: #2d2d2d;
+    --button-hover: #404040;
+    --aqi-color: #6ab0f3;
+    --section-title-color: #a0a0a0;
+    --info-label-color: #d0d0d0;
+    --place-name-color: #3a9e3a;
+}
+
+/* Main Info Pane Styles */
 #infoPane {
     position: absolute;
     right: 0;
     top: 0;
-    width: 300px;
+    width: 320px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    padding: 24px;
     overflow-y: auto;
     z-index: 999;
+    font-family: 'Inter', sans-serif;
+    
+    /* Theme Variables */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-left: 1px solid var(--border-color);
+    
+    /* Animation & Transitions */
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, 
+                opacity 0.35s ease,
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+    
+    box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3); /* optional soft shadow */
 }
-.hidden {
-    display: none;
+
+#infoPane.show {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
 }
-#closeBtn {
+
+/* Backdrop Styles */
+#backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s;
+    z-index: 998;
+}
+
+#backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Header Section */
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#placeName {
+    color: var(--place-name-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Control Buttons */
+#closeBtn, #themeToggle {
     background: none;
     border: none;
-    font-size: 20px;
-    float: right;
     cursor: pointer;
+    padding: 4px;
+    transition: background-color 0.2s, color 0.2s;
+    color: var(--text-color);
+}
+
+#closeBtn {
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+#themeToggle {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+#closeBtn:hover, #themeToggle:hover {
+    background-color: var(--button-hover);
+}
+
+/* Content Sections */
+.info-section {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--section-title-color);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 12px;
+}
+
+.info-label {
+    font-weight: 700;
+    color: var(--info-label-color);
+}
+
+.info-value {
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* AQI Specific Styles */
+.aqi-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.aqi-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--aqi-color);
+    transition: color 0.3s ease;
+}
+
+/* Pollutants List */
+.pollutants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pollutant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    background-color: var(--section-bg);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pollutant-name {
+    font-weight: 500;
+    color: var(--text-color);
+    min-width: 120px;
+}
+
+.pollutant-value {
+    font-weight: 600;
+    color: var(--aqi-color);
+    font-family: 'Courier New', monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    #infoPane {
+        width: 280px;
+        padding: 16px;
+    }
 }
