@@ -1,0 +1,5 @@
+These are the following updates to be made by all developers :
+
+1) Clerk integration for signup/login features
+2) An LLM chat interface for addressing user queries about AQI patterns in the area and safety precautions to be taken
+3) An AQI visualiser for visualing different regions on the map marked with different colours
